@@ -1,4 +1,5 @@
 local INVENTORY_SLOTS = 16
+local SLEEP_INTERVAL = 10
 
 local function is_inventory_full()
     for slot = 1, INVENTORY_SLOTS do
@@ -13,6 +14,6 @@ while true do
     if not is_inventory_full() then
         turtle.dig()
     else
-        sleep(10)
+        sleep(SLEEP_INTERVAL)
     end
 end
