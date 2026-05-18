@@ -91,7 +91,7 @@ local function inventory_can_take_next()
 end
 
 
-local function move_to(target_depth, target_offset, target_facing)
+local function move_to(target_depth, target_offset, end_facing)
     if offset ~= target_offset then
         local want = target_offset > offset and 1 or 3
         face(want)
@@ -108,12 +108,18 @@ local function move_to(target_depth, target_offset, target_facing)
         face(want)
         while depth ~= target_depth do
             turtle.forward()
+            local dd, do_ = delta_for_facing(facing)
+            depth = depth + dd
+            offset = offset + do_
         end
     end
+
+    face(end_facing)
 end
 
 local function return_home()
     move_to(0, 0, 2) -- 2 to turn 180°
 end
 
-move_to(6, 4, 2) 
+move_to(5, 0, 2)
+return_home()
