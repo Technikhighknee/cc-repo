@@ -1,12 +1,12 @@
 local INVENTORY_SLOTS = 16
 
-if not args[1] or not args[2] then
+if not arg[1] or not arg[2] then
     print("Usage: strip-miner <length> <side_length>")
     return
 end
 
-local length = tonumber(args[1])
-local side_length = tonumber(args[2])
+local length = tonumber(arg[1])
+local side_length = tonumber(arg[2])
 
 if not length or not side_length or length < 1 or side_length < 1 then
     print("Both arguments must be positive numbers.")
