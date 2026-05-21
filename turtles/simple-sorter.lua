@@ -7,7 +7,8 @@ local INVENTORY_SLOTS = 16
 local ITEM_WHITELIST = {
     "minecraft:leather",
     "minecraft:gravel",
-    "minecraft:nether_bricks",
+    "minecraft:gold_ingot",
+    "minecraft:nether_brick",
     "minecraft:crying_obsidian",
     "minecraft:obsidian",
     "minecraft:soul_sand",
