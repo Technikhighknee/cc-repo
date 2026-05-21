@@ -6,25 +6,28 @@
 -- Front -> Cauldron that is fed by Refined Storage exporter
 -- Bottom -> Chest with RS importer
 -- Back -> RS Autocrafter with processing recipe "1x Empty Bucket -> 1x Lava Bucket"
---
--- NOTE: Fill slot 2 - 16 with something other than buckets; like cobblestone
 
+local INVENTORY_SLOTS = 16
 local EMPTY_BUCKET_NAME = "minecraft:bucket"
+local LAVA_BUCKET_NAME = "minecraft:lava_bucket"
+
 local function is_empty_bucket(slot)
     local detail = turtle.getItemDetail(slot)
     return detail and detail.name == EMPTY_BUCKET_NAME
 end
 
-local FIRST_SLOT = 1
-local function is_first_slot_empty_bucket()
-    return is_empty_bucket(FIRST_SLOT)
+local function is_lava_bucket(slot)
+    local detail = turtle.getItemDetail(slot)
+    return detail and detail.name == LAVA_BUCKET_NAME
 end
 
-local function fill_bucket()
-    return turtle.place()
+local function fill_bucket(slot)
+    turtle.select(slot)
+    turtle.place()
 end
 
-local function drop_bucket_into_chest()
+local function drop_bucket_into_chest(slot)
+    turtle.select(slot)
     turtle.dropDown()
 end
 
@@ -33,9 +36,12 @@ term.setCursorPos(1,1)
 print("Bucket filling machine")
 
 while true do
-    if is_first_slot_empty_bucket() then
-        if fill_bucket() then
-            drop_bucket_into_chest()
+    for slot = 1, INVENTORY_SLOTS do
+        if is_empty_bucket(slot) then
+            fill_bucket(slot)
+        end
+        if is_lava_bucket(slot) then
+            drop_bucket_into_chest(slot)
         end
     end
     os.sleep(0)
