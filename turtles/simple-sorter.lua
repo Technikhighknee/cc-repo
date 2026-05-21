@@ -43,6 +43,10 @@ local function discard_selected()
     turtle.drop()
 end
 
+term.clear()
+term.setCursorPos(1, 1)
+print("Sorting Machine")
+
 while true do
     for slot = 1, INVENTORY_SLOTS do
         local name = get_item_name(slot)
