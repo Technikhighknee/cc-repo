@@ -2,7 +2,7 @@ This is for me to wget inside of computercraft :)
 
 ## Downloader  
 ### Install:  
-`wget https://raw.githubusercontent.com/Technikhighknee/cc-repo/refs/heads/main/bin/download.lua`  
+`wget https://raw.githubusercontent.com/Technikhighknee/cc-repo/refs/heads/main/lua/bin/download.lua`  
 
 ### Usage:  
 `download <source> [destination]`  
